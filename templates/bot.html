@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f9f1f7; /* Faint pink background */
+}
+
+#chatButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #f8a1c4; /* Lighter Edinburgh Napier pink */
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 1050;
+}
+
+.chat-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    width: 350px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px 10px 0 0;
+    border: 1px solid #eee; /* Light border for popup */
+    z-index: 1050;
+}
+
+.chat-header {
+    background-color: #f8a1c4; /* Lighter pink for header, closer to logo color */
+    color: white;
+    padding: 5px 5px;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Other styles remain the same */
+
+
+
+/* Ensure chat messages clear floats to maintain flow within .chat-content */
+.p1, .p2 {
+    margin-top: 4px; /* Ensure spacing between messages */
+    display: flex; /* Flex display to manage message alignment and spacing */
+    width: auto; /* Allow messages to expand based on content */
+    overflow-wrap: break-word; /* Ensure long words do not overflow */
+    clear: both; /* Clears the float to ensure messages stack correctly */
+}
+
+//* User Message Styling (.p1) */
+.p1 {
+    background-color: #d6336c; /* Original lighter pink for user messages */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 18px;
+    margin: 8px 0;
+    max-width: 80%;
+    word-wrap: break-word;
+    clear: both;
+    align-self: flex-end; /* Aligns user messages to the right */
+}
+
+/* Bot Response Styling (.p2) */
+.p2 {
+    background-color: #ad1457; /* Deeper shade of pink for responses */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 18px;
+    margin: 8px 0;
+    max-width: 80%;
+    word-wrap: break-word;
+    clear: both;
+    align-self: flex-start; /* Aligns bot messages to the left */
+}
+
+.chat-content {
+    display: flex;
+    flex-direction: column;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #fafafa;
+}
+
+.input-box {
+    display: flex;
+    padding: 10px;
+    background-color: #fff; /* Ensure input box stands out */
+}
+
+#userInput {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#send {
+    padding: 10px 20px;
+    background-color: #d6336c; /* Match button to theme */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Message styling */
+.p1 { /* User message styling */
+    color: white;
+    background-color: #d6336c;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 80%;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    float: right;
+    clear: both;
+}
+
+.p2 { /* Bot response styling */
+    color: white;
+    background-color: #d6336c;
+    padding: 10px;
+    border-radius: 20px;
+    max-width: 80%;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    float: left;
+    clear: both;
+}
+
+.loader {
+    display: none;
+    border: 4px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 4px solid #E91E63; /* Pink shade */
+    width: 20px;
+    height: 20px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    margin: auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg);
+    }
+
+/* Clear floats after the messages */
+.chat-content::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Reset scroll bar */
+.chat-content {
+    scrollbar-width: thin;
+    scrollbar-color: #d6336c #f9f1f7;
+}
+
+/* Scrollbar styles for webkit browsers */
+.chat-content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.chat-content::-webkit-scrollbar-track {
+    background: #f9f1f7;
+}
+
+.chat-content::-webkit-scrollbar-thumb {
+    background-color: #d6336c;
+    border-radius: 20px;
+}
+
+
+
+
+#closeChat{
+    position: fixed;
+    bottom: 3px;
+    right: 3px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #f8a1c4; /* Lighter Edinburgh Napier pink */
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#closeChat:hover {
+    opacity: 1; /* Full opacity on hover for feedback */
+}
+
+
+
+
+    </style>
+</head>
+<body>
+
+<button id="chatButton">Chat with us!</button>
+
+<div id="chatPopup" class="chat-popup">
+    <div class="chat-header">
+    <img src="static/logo.png" alt="Edinburgh Napier University Logo" height="70" width="280"> <!-- Update path accordingly -->
+
+    <button id="closeChat" onclick="toggleChat()">close</button>
+</div>
+
+
+    <div id="chatbox" class="chat-content"></div>
+    <div id="loader" class="loader"></div>
+    <div id="ib" class="input-box">
+        <input id="userInput" type="text" placeholder="Type your message here...">
+        <button onclick="sendMessage()" id="send">Send</button>
+    </div>
+</div>
+
+<script>
+
+async  function  sendMessage() {
+
+    try{
+        var pm1 =  document.getElementsByClassName("p1")
+        var pmv = pm1[pm1.length-1].innerHTML
+    }
+
+    catch{
+        var pmv =  "none"
+    }
+
+    const userInput =  document.getElementById('userInput');
+    const message =  userInput.value;
+
+    userInput.value  =  '';
+    document.getElementById('chatbox').innerHTML  +=  `<p id="p1" class="p1">`  + message +  `</p>`;
+    document.getElementById('loader').style.display  =  "block"
+
+    const response =  await  fetch('/chat', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            'message': message,
+            'pm': pmv
+        })
+    });
+
+    const responseData =  await  response.json();
+    document.getElementById('chatbox').innerHTML += `<p id="p2" class="p2">` + responseData.message + `</p>`;
+    document.getElementById('loader').style.display = "none"
+    var objDiv =  document.getElementById("chatbox");
+    objDiv.scrollTop  =  objDiv.scrollHeight;
+
+
+}
+
+
+</script>
+
+<script>
+
+const node = document.getElementById("userInput");
+
+node.addEventListener("keyup", function(event) {
+    if (event.key === "Enter") {
+        sendMessage()
+    }
+
+});
+
+</script>
+
+<script>
+    document.getElementById('chatButton').addEventListener('click', function() {
+    var chatPopup = document.getElementById('chatPopup');
+    if (chatPopup.style.display === 'none' || chatPopup.style.display === '') {
+        chatPopup.style.display = 'block';
+    } else {
+        chatPopup.style.display = 'none';
+    }
+});
+
+</script>
+
+<script>
+function toggleChat() {
+    var chatPopup = document.getElementById('chatPopup');
+    if (chatPopup.style.display === 'none' || !chatPopup.style.display) {
+        chatPopup.style.display = 'block';
+    } else {
+        chatPopup.style.display = 'none';
+    }
+}
+</script>
+
+</body>
+</html>

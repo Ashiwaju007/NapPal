@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a4cc1174-df70-45a7-9391-cc09a62a5f38" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/NapPal.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Computer.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/New Folders.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chatbot.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/chatbot_docs/Policies.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/embeddings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/embeddings_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/embs0.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/loading.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/response.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/bot (Original).html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/bot.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tutorial.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web_app.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web_response.png" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2bhxCTLQdzjEJ4GliPTSZWAAqFc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/olasu/Desktop/Uk Studnets/Dissertation/Ismaila UK Ismaila/Project/NapPal"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\olasu\Desktop\Uk Studnets\Dissertation\Ismaila UK Ismaila\Project\NapPal" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a4cc1174-df70-45a7-9391-cc09a62a5f38" name="Changes" comment="" />
+      <created>1706680983521</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1706680983521</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Popup Chat</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="chat-popup" id="chatPopup">
+  <form action="/submitChat" class="chat-container">
+    <h1>Chat</h1>
+    <textarea placeholder="Type message.." name="chatMsg" required></textarea>
+    <button type="submit" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeChat()">Close</button>
+  </form>
+</div>
+
+<button class="open-button" onclick="openChat()">Chat with us!</button>
+
+<script src="script.js"></script>
+</body>
+</html>
